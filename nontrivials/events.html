@@ -1,0 +1,48 @@
+<!-- event is automatically passed when an event occures in a web interaction -->
+<!-- Events can be triggered by user actions (like clicking a button, submitting a
+    form, hovering over an element, etc.). /* Properties and Methods of the Event
+    Object: 1=>e.target: This property references the element that triggered the
+    event. For example, if you click a button, e.target will refer to that button.
+    2=>e.type: Indicates the type of event that occurred, such as "click," "submit,"
+"mouseover," etc. e.preventDefault(): A method used to prevent the default
+behavior associated with an event. For instance, preventing a form from
+submitting or a link from navigating to a new page. e.stopPropagation():
+Prevents the event from propagating up or down the DOM tree. It stops event
+bubbling or capturing. e.clientX and e.clientY: These properties provide the
+horizontal and vertical coordinates of the mouse pointer when the event
+occurred, particularly useful for mouse-related events. e.key and e.keyCode:
+These properties provide information about keys pressed during keyboard-related
+events. */
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+  </head>
+  <body>
+    <button id="myButton">Click</button>
+    <input type="text" id="inputValue" />
+
+    <script>
+      // Example: Adding a click event listener to a button
+      const myButton = document.getElementById("myButton");
+
+      const inputField = document.getElementById("inputValue");
+
+      function passthis(e) {
+        console.log(e.target);
+      }
+
+      inputField.addEventListener("change", passthis);
+
+      myButton.addEventListener("click", function (e) {
+        // 'e' here is the event object automatically passed to the function
+        console.log("Button clicked!", e.target, e.target.value);
+        e.preventDefault(); // Prevents the default behavior of the click event
+      });
+    </script>
+  </body>
+</html>
